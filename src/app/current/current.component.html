@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>{{myweather.cityName}}</h1>
+  <h2>{{myweather.temp}}&deg;</h2>
+  <div class="img">
+    <img src="http://weather.omgez911.com/icons/{{myweather.icon}}.png">
+  </div>
+  <h3>{{myweather.weatherKind}}</h3>
+  <h4>Máxima: {{myweather.tempMax}}&deg;</h4>
+  <h4>Mínima: {{myweather.tempMin}}&deg;</h4>
+</div>
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <input type="text" ngModel name="city" placeholder="Nome da Cidade">
+  <button name="button">IR</button>
+</form>

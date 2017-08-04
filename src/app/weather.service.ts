@@ -12,12 +12,6 @@ export class WeatherService {
   location
   constructor(private http:Http) { }
 
-
-  // localWeather(lat:string, lon:string) {
-  //   return this.http.get(`http://api.openweathermap.org/data/2.5/weather?appid=0f3fb9fa31ad3d41f1bb2bd0841c3f2f&lat=${lat}&lon=${lon}&units=imperial`).map((response:Response) =>
-  //     response.json());
-  // }
-
   localWeather() {
     return new Promise ((res, rej) => {
       navigator.geolocation.getCurrentPosition((pos) => {

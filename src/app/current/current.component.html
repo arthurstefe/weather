@@ -3,7 +3,7 @@
   <input type="text" ngModel name="city" placeholder="Nome da Cidade">
   <button name="button">IR</button>
 </form>
-<button class="makeDefaultButton" name="button" (click)="setDefaultLocation()">Local Padrão</button>
+<button class="makeDefaultButton" name="button" (click)="setDefaultLocation()">Definir como local favorito</button>
 <div class="col-md-4">
   <div class="currentWeather">
     <div class="boxtTitle">
@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<div class="col-md-4">
+<div class="col-md-6">
   <div class="fiveDaysForecast">
     <div class="boxtTitle">
       <span>Previsão próximos 5 dias</span>
@@ -36,35 +36,33 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="col-md-4">
-  <div class="row ">
-    <div class="boxtTitle">
-      <span>Variação da temperatura</span>
-    </div>
-    <div class="col-md-6">
-      <div style="display: block;">
-        <canvas baseChart width="800" height="800"
-        [datasets]="lineChartData"
-        [labels]="lineChartLabels"
-        [options]="lineChartOptions"
-        [colors]="lineChartColors"
-        [legend]="lineChartLegend"
-        [chartType]="lineChartType"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
+    <div class="row ">
+      <div class="boxtTitle">
+        <span>Variação da temperatura</span>
       </div>
-    </div>
-    <div class="col-md-6" style="margin-bottom: 10px">
-      <table class="table table-responsive table-condensed">
-        <tr>
-          <th *ngFor="let label of lineChartLabels">{{label}}</th>
-        </tr>
-        <tr *ngFor="let d of lineChartData">
-          <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-        </tr>
-      </table>
+      <div class="col-md-6">
+        <div style="display: block;">
+          <canvas baseChart width="274" height="274"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+      <div class="col-md-6" style="margin-bottom: 10px">
+        <table class="table table-responsive table-condensed">
+          <tr>
+            <th *ngFor="let label of lineChartLabels">{{label}}</th>
+          </tr>
+          <tr *ngFor="let d of lineChartData">
+            <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

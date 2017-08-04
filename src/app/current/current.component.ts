@@ -37,18 +37,18 @@ export class CurrentComponent implements OnInit {
   onSubmit(weatherForm:NgForm){
     this.ws.anotherCityWeather(weatherForm.value.city).subscribe(
       (data) => {
-      this.myweather = new CurrentWeather(data.name, data.main.temp, data.weather[0].icon, data.weather[0].description, data.main.temp_max, data.main.temp_min);
+        this.myweather = new CurrentWeather(data.name, data.main.temp, data.weather[0].icon, data.weather[0].description, data.main.temp_max, data.main.temp_min);
+        this.setFiveDayForecast(weatherForm.value.city);
       }
     )
-    this.setFiveDayForecast(weatherForm.value.city);
   }
 
   setFiveDayForecast(city){
+    console.log(city);
     this.forecast.splice(0, this.forecast.length);
     this.ws.fiveDayForecast(city).subscribe(
       (data) =>{
         console.log(data);
-
         for(let i=0; i<data.list.length;i= i+8){
           const forecastWeather = new Forecast(data.city.name,
                                                 data.list[i].weather[0].description,
@@ -68,35 +68,32 @@ export class CurrentComponent implements OnInit {
     localStorage.setItem("defaultLocation", JSON.stringify(this.myweather));
   }
 
-  // ########################## CHARTS ###########################################
-
   public lineChartData:Array<any> = [
-   {data: this.chartsData, label: 'Variação da temperatura (5 dias)'}
+    {data: this.chartsData, label: 'Variação da temperatura (5 dias)'}
   ];
- public lineChartLabels:Array<any> = ['Amanhã', '2 dias', '3 dias', '4 dias', '5 dias'];
- public lineChartOptions:any = {
-   responsive: true
- };
- public lineChartColors:Array<any> = [
-   { // grey
-     backgroundColor: 'rgba(148,159,177,0.2)',
-     borderColor: 'rgba(148,159,177,1)',
-     pointBackgroundColor: 'rgba(148,159,177,1)',
-     pointBorderColor: '#fff',
-     pointHoverBackgroundColor: '#fff',
-     pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-   }
- ];
- public lineChartLegend:boolean = true;
- public lineChartType:string = 'line';
+  public lineChartLabels:Array<any> = ['Amanhã', '2 dias', '3 dias', '4 dias', '5 dias'];
+  public lineChartOptions:any = {
+     responsive: true
+  };
+  public lineChartColors:Array<any> = [
+    {
+      backgroundColor: 'rgba(52, 127, 255, 0.67)',
+      borderColor: 'rgba(52, 127, 255, 0.95)',
+      pointBackgroundColor: 'rgba(52, 127, 255, 0.95)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
 
- // events
- public chartClicked(e:any):void {
-   console.log(e);
- }
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
 
- public chartHovered(e:any):void {
-   console.log(e);
- }
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
 
 }

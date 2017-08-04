@@ -38,6 +38,7 @@ app-current form {
    position: absolute;
    top: 5px;
    left: 5px;
+       z-index: 9999;
 
 }
 
@@ -45,6 +46,11 @@ app-current input[type="text"] {
   padding: 15px;
   border: solid 1px #347fff;
   border-radius: 8px 0 0 8px;
+}
+
+th {
+    text-align: left;
+    font-size: .875em;
 }
 
 app-current button {
@@ -55,6 +61,12 @@ app-current button {
   margin-left: -5px;
   cursor: pointer;
   color: #fff;
+  z-index: 9999;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .makeDefaultButton {
@@ -84,20 +96,11 @@ app-current button {
 }
 
 .row {
-  height: 590px;
-  margin-top: 100px;
-  border: solid 4px #347fff;
-  border-radius: 6px;
-  background: #fff;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: stretch;
+
 }
 
 .fiveDaysForecast {
-  height: 590px;
+  height: auto;
   margin-top: 100px;
   width:100%;
   border: solid 4px #347fff;
@@ -124,7 +127,7 @@ h1, h2, h3, h4{
 }
 
 .wrapper{
-  width:92.5%;
+  width:100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -132,9 +135,6 @@ h1, h2, h3, h4{
 
 .forecast {
   width: 20%;
-  border: solid 1px #1ea3ff;
-  border-radius: 5px;
-  margin: 5px;
   text-align: center;
 }
 

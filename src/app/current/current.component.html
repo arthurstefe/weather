@@ -1,68 +1,70 @@
-
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
-  <input type="text" ngModel name="city" placeholder="Nome da Cidade">
-  <button name="button">IR</button>
-</form>
-<button class="makeDefaultButton" name="button" (click)="setDefaultLocation()">Definir como local favorito</button>
-<div class="col-md-4">
-  <div class="currentWeather">
-    <div class="boxtTitle">
-      <span>Temperatura atual</span>
-    </div>
-    <div class="currentContent">
-      <h1>{{myweather.cityName}}</h1>
-      <h2>{{myweather.temp}}&deg;</h2>
-      <div class="img">
-        <img src="http://weather.omgez911.com/icons/{{myweather.icon}}.png">
-      </div>
-      <h3>{{myweather.weatherKind}}</h3>
-      <h4>Máxima: {{myweather.tempMax}}&deg;</h4>
-      <h4>Mínima: {{myweather.tempMin}}&deg;</h4>
-    </div>
-  </div>
-</div>
-<div class="col-md-6">
-  <div class="fiveDaysForecast">
-    <div class="boxtTitle">
-      <span>Previsão próximos 5 dias</span>
-    </div>
-    <div class="wrapper">
-      <div class="forecast" *ngFor="let dayWeather of forecast">
-        <div class="day">
-          <h2 class="date">{{dayWeather.date | date: 'EEEE'}}</h2>
-          <img src="http://weather.omgez911.com/icons/{{dayWeather.img}}.png">
-          <h4 class="description">{{dayWeather.description}}</h4>
-          <h3 class="tempM">{{dayWeather.temp}}&deg;</h3>
-        </div>
-      </div>
-    </div>
-    <div class="row ">
+<div class="container">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+    <input type="text" ngModel name="city" placeholder="Nome da Cidade">
+    <button name="button">IR</button>
+  </form>
+  <button class="makeDefaultButton" name="button" (click)="setDefaultLocation()">Definir como local favorito</button>
+  <div class="col-md-6">
+    <div class="currentWeather">
       <div class="boxtTitle">
-        <span>Variação da temperatura</span>
+        <span>Temperatura atual</span>
       </div>
-      <div class="col-md-6">
-        <div style="display: block;">
-          <canvas baseChart width="274" height="274"
-          [datasets]="lineChartData"
-          [labels]="lineChartLabels"
-          [options]="lineChartOptions"
-          [colors]="lineChartColors"
-          [legend]="lineChartLegend"
-          [chartType]="lineChartType"
-          (chartHover)="chartHovered($event)"
-          (chartClick)="chartClicked($event)"></canvas>
+      <div class="currentContent">
+        <h1>{{myweather.cityName}}</h1>
+        <h2>{{myweather.temp}}&deg;</h2>
+        <div class="img">
+          <img src="http://weather.omgez911.com/icons/{{myweather.icon}}.png">
+        </div>
+        <h3>{{myweather.weatherKind}}</h3>
+        <h4>Máxima: {{myweather.tempMax}}&deg;</h4>
+        <h4>Mínima: {{myweather.tempMin}}&deg;</h4>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="fiveDaysForecast">
+      <div class="boxtTitle">
+        <span>Previsão próximos 5 dias</span>
+      </div>
+      <div class="wrapper">
+        <div class="forecast" *ngFor="let dayWeather of forecast">
+          <div class="day">
+            <h2 class="date">{{dayWeather.date | date: 'EEEE'}}</h2>
+            <img src="http://weather.omgez911.com/icons/{{dayWeather.img}}.png">
+            <h4 class="description">{{dayWeather.description}}</h4>
+            <h3 class="tempM">{{dayWeather.temp}}&deg;</h3>
+          </div>
         </div>
       </div>
-      <div class="col-md-6" style="margin-bottom: 10px">
-        <table class="table table-responsive table-condensed">
-          <tr>
-            <th *ngFor="let label of lineChartLabels">{{label}}</th>
-          </tr>
-          <tr *ngFor="let d of lineChartData">
-            <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-          </tr>
-        </table>
+      <div class="row ">
+        <div class="boxtTitle">
+          <span>Variação da temperatura</span>
+        </div>
+        <div class="col-md-6">
+          <div style="display: block;">
+            <canvas baseChart width="274" height="274"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="col-md-6" style="margin-bottom: 10px">
+          <table class="table table-responsive table-condensed">
+            <tr>
+              <th *ngFor="let label of lineChartLabels">{{label}}</th>
+            </tr>
+            <tr *ngFor="let d of lineChartData">
+              <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<footer><p><small>Desenvolvido por Arthur Stefe Magalhães</small></p></footer>

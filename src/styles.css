@@ -6,6 +6,11 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+body {
+  background: #1ea3ff;
+}
+
+
 app-header {
   width: 100%;
 }
@@ -30,7 +35,11 @@ app-current {
   position: absolute;
   top: 63px;
   bottom: 0px;
-  background: #1ea3ff;
+}
+
+.container {
+  padding-bottom: 100px;
+
 }
 
 app-current form {
@@ -43,7 +52,7 @@ app-current form {
 }
 
 app-current input[type="text"] {
-  padding: 15px;
+  padding: 9px;
   border: solid 1px #347fff;
   border-radius: 8px 0 0 8px;
 }
@@ -54,7 +63,7 @@ th {
 }
 
 app-current button {
-  padding: 15px;
+  padding: 9px;
   background: #347fff;
   border: solid 1px #347fff;
   border-radius: 0 8px 8px 0;
@@ -83,6 +92,7 @@ app-current button {
 
 .currentWeather {
   width:100%;
+  min-height: 606px;
   margin-top: 100px;
   height: 590px;
   border: solid 4px #347fff;
@@ -95,12 +105,9 @@ app-current button {
   align-content: stretch;
 }
 
-.row {
-
-}
-
 .fiveDaysForecast {
   height: auto;
+  min-height: 606px;
   margin-top: 100px;
   width:100%;
   border: solid 4px #347fff;
@@ -170,7 +177,6 @@ h1{
 }
 
 .day{
-  margin:0 2em;
 }
 
 .day img {
@@ -178,4 +184,15 @@ h1{
     width: 100%;
     height: auto;
     margin: 0 auto;
+}
+
+footer {
+  background: #347fff;
+  color: #fff;
+  text-align: center;
+  padding: 22px;
+  border-top: solid;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
